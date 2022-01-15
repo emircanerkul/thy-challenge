@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev": "npm run liveserver & npm run livereload & npm run sass",
+    "liveserver": "live-server",
+    "livereload": "livereload",
+    "sass": "node-sass assets/scss/app.scss assets/css/app.css -w --output-style=compressed --source-map=true",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "livereload": "^0.9.3",
+    "node-sass": "^7.0.1"
+  }
+}

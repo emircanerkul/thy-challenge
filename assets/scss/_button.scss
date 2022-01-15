@@ -1,0 +1,75 @@
+@import "_variables";
+
+$button-dark-color: #242a36;
+$button-gray-color: #e9eeef;
+.button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px;
+  background: $primary-color;
+  color: #fff;
+  font-size: 20pt;
+  font-weight: bold;
+  sup {
+    align-self: flex-start;
+    font-weight: 400;
+  }
+  &:hover {
+    background: darken($color: $primary-color, $amount: 5);
+  }
+
+  &.dark {
+    &.border {
+      border: solid 1px;
+      border-radius: 5px;
+    }
+    background: $button-dark-color;
+    color: #fffc;
+    font-size: 10pt;
+    font-weight: bold;
+    i {
+      color: #97a0af;
+      font-size: 16pt;
+    }
+
+    &:hover {
+      background: darken($color: $button-dark-color, $amount: 5);
+    }
+  }
+
+  &.gray {
+    background: $button-gray-color;
+    color: darken($color: $button-gray-color, $amount: 30);
+    &:hover {
+      background: darken($color: $button-gray-color, $amount: 5);
+      color: darken($color: $button-gray-color, $amount: 40);
+    }
+  }
+
+  &#passenger {
+    & > div {
+      display: flex;
+      align-self: center;
+      align-items: center;
+      i {
+        font-size: 10pt;
+        &:nth-child(1) {
+          color: #97a0af;
+        }
+        &:nth-child(2) {
+          color: #97a0afa2;
+        }
+        &:nth-child(3) {
+          color: #97a0af79;
+        }
+        &:last-child {
+          color: #97a0af79;
+          font-size: 5pt;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>searchFlight Challenge</title>
+
+    <link rel="stylesheet" href="assets/css/app.css" />
+  </head>
+
+  <body data-bind="class: currentState() == 'search' ? 'dark':''">
+    <header>
+      turkishairlines.com
+      <aside><span>search</span>Flight Challenge</aside>
+    </header>
+
+    <section id="search" data-bind="visible: currentState() == 'search'">
+        <p class="title"><b>Merhaba</b>Nereyi keşfetmek istersiniz?</h1>
+        <div class="search-area">
+          <div class="origin-select">
+            <select data-bind="options: $root.availableOrigins, value: origin, optionsText: 'text'" name="origin" id="origin"></select>
+          </div>
+          <div class="destination-select">
+            <select data-bind="options: $root.availableDestinations, value: destination, optionsText: 'text'" name="destination" id="destination"></select>
+          </div>
+          <button class="button dark date-range">Tarih <i class="icon icon-calendar"></i></button>
+          <label id="passenger" class="button dark" for="passenger-options-toggler" aria-describedby="passenger-options">
+            <div>
+              <i class="icon" data-bind="visible: passengerCount() > 0, class: passengerClass() == 'economy' ? 'icon-user' : 'icon-user-tie'"></i>
+              <i class="icon icon-user" data-bind="visible: passengerCount() > 1, class: passengerClass() == 'economy' ? 'icon-user' : 'icon-user-tie'"></i>
+              <i class="icon icon-user" data-bind="visible: passengerCount() > 2, class: passengerClass() == 'economy' ? 'icon-user' : 'icon-user-tie'"></i>
+              <i class="icon icon-plus icon-xs" data-bind="visible: passengerCount() > 3"></i>
+            </div>
+            <sup data-bind="text: passengerCount"></sup>
+          </label>
+          <input type="checkbox" id="passenger-options-toggler" class="visually-hidden">
+          <div id="passenger-options" role="tooltip">
+            <h3>Kabin ve yolcu seçimi</h3>
+            <div>
+              <input type="radio" id="economy-class" name="class-type" value="economy" data-bind="checked: passengerClass" >
+              <label for="economy-class">Economy Class</label>
+              <input type="radio" id="bussiness-class" name="class-type" value="business" data-bind="checked: passengerClass" >
+              <label for="bussiness-class">Bussiness Class</label>
+            </div>
+            <div>
+              <b>Yolcu</b>
+              <div class="passenger-select">
+                <button class="button gray" data-bind="click: removePassenger"><i class="icon-minus"></i></button>
+                <input class="number-selector" max="99" data-bind="value: passengerCount">
+                <button class="button gray" data-bind="click: addPassenger"><i class="icon-plus"></i></button>
+              </div>
+            </div>
+            <div id="arrow" data-popper-arrow></div>
+          </div>
+          <button class="button" data-bind="click: search"><i class="icon icon-keyboard_arrow_right"></i></button>
+        </div>
+    </section>
+    <section id="order" data-bind="visible: currentState() == 'order'">
+      <div class="title">
+        <span>Uçuş</span>
+        <h2>Isanbul - Antalya, 6 Yolcu</h2>
+      </div>
+      <div>
+        <div>
+          <b>Promosyon Kodu</b>
+          <label class="switch">
+            <input type="checkbox" id="promotion-code">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <p>Promosyon Kodu seçeneği ile tüm Economy kabini Eco Fly paketlerini %50 indirimle satın alabilirsiniz!</p>
+        <p>Promosyon Kodu seçeneği aktifken Eco Fly paketi haricinde seçim yapılamamaktadır.</p>
+      </div>
+
+      <div class="result-table">
+        <header>
+          Sıralama Kriteri
+          <button class="button dark border">Ekonomi Ücreti</button>
+          <button class="button dark border">Kalkış Saati</button>
+        </header>
+        <div class="flights"  data-bind="foreach: flights()">
+          <div class="flight">
+            <div>
+              <div>
+                <b>01:15</b>
+                <span>IST</span>
+                <small>Istanbul</small>
+              </div>
+              <hr>
+              <div>
+                <b>01:15</b>
+                <span>IST</span>
+                <small>Istanbul</small>
+              </div>
+              <div>
+                <small>Uçuş Süresi</small>
+                <b>1h 30m</b>
+              </div>
+            </div>
+
+            <label for="economy-class-2">
+              <div>
+                <input type="radio" id="economy-class-2" name="class-type" value="economy">
+                <span>ECONOMY</span>
+              </div>
+              <div>
+                <small>Yolcu Başına</small>
+                <b>TRY 137</b>
+              </div>
+            </label>
+
+            <label for="business-class-1">
+              <div>
+                <input type="radio" id="business-class-1" name="class-type" value="economy">
+                <span>BUSINESS</span>
+              </div>
+              <div>
+                <small>Yolcu Başına</small>
+                <b>TRY 137</b>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="assets/js/knockout-3.5.1.js"></script>
+    <script src="assets/js/popper.min.js" ></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
