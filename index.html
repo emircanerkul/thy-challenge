@@ -168,7 +168,7 @@
     <section id="result" data-bind="with: selectedFlight, visible: currentState() == 'result'">
       <header>
         <i data-bind="class: status == 'AVAILABLE' ? 'icon-checkmark' : 'icon-cross'"></i>
-        Kabin seçiminiz tamamlandı.
+        Kabin seçiminiz <em data-bind="text: status == 'AVAILABLE' ? ' tamamlandı.' : 'tamamlanamadı.'"></em>
       </header>
       <div>
         Toplam tutar <span data-bind="text: price.currency + ' ' + price.amount * $root.passengerCount() / ($root.isPromotionEnabled() == true ? 2 : 1)"></span>
