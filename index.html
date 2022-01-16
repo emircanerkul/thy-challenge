@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>searchFlight Challenge</title>
+    <link rel="shortcut icon" href="//www.turkishairlines.com/theme/img/icons/favicon.ico" />
 
     <link rel="stylesheet" href="assets/css/app.css" />
   </head>
@@ -19,10 +20,10 @@
         <p class="title"><b>Merhaba</b>Nereyi keşfetmek istersiniz?</h1>
         <div class="search-area">
           <div class="origin-select">
-            <select data-bind="options: $root.availableOrigins, value: origin, optionsText: 'text'" name="origin" id="origin"></select>
+            <select data-bind="options: $root.availableOrigins, value: origin, optionsText: 'text', optionsValue: 'v'"></select>
           </div>
           <div class="destination-select">
-            <select data-bind="options: $root.availableDestinations, value: destination, optionsText: 'text'" name="destination" id="destination"></select>
+            <select data-bind="options: $root.availableDestinations, value: destination, optionsText: 'text', optionsValue: 'v'" ></select>
           </div>
           <button class="button dark date-range">Tarih <i class="icon icon-calendar"></i></button>
           <label id="passenger" class="button dark" for="passenger-options-toggler" aria-describedby="passenger-options">
@@ -59,13 +60,13 @@
     <section id="order" data-bind="visible: currentState() == 'order'">
       <div class="title">
         <span>Uçuş</span>
-        <h2>Isanbul - Antalya, 6 Yolcu</h2>
+        <h2><span data-bind="text: originText"></span> - <span data-bind="text: destinationText"></span>, <span data-bind="text: passengerCount"></span> Yolcu</h2>
       </div>
       <div>
         <div>
           <b>Promosyon Kodu</b>
           <label class="switch">
-            <input type="checkbox" id="promotion-code">
+            <input type="checkbox" data-bind="checked: isPromotionEnabled ">
             <span class="slider round"></span>
           </label>
         </div>
@@ -76,55 +77,105 @@
       <div class="result-table">
         <header>
           Sıralama Kriteri
-          <button class="button dark border">Ekonomi Ücreti</button>
-          <button class="button dark border">Kalkış Saati</button>
+          <button data-bind="disable: defaultShortBy() == 'economy', click: sort" class="button dark border" data-sort="economy">Ekonomi Ücreti</button>
+          <button data-bind="disable: defaultShortBy() == 'arrival', click: sort" class="button dark border" data-sort="arrival">Kalkış Saati</button>
         </header>
-        <div class="flights"  data-bind="foreach: flights()">
+        <div class="noresult" data-bind="hidden: hasAnyFlights">Herhangi bir sonuç bulunamamıştır. Önceki adıma gitmek için sayfayı yineleyiniz 🙂 Sonuç yok ise anlık durumu LocalStorage'a kayıt etmedim.</div>
+        <div class="flights" data-bind="foreach: flights()">
           <div class="flight">
-            <div>
+            <div class="flight-option">
               <div>
-                <b>01:15</b>
-                <span>IST</span>
-                <small>Istanbul</small>
+                <div>
+                  <b data-bind="text: departureDateTimeDisplay"></b>
+                  <span data-bind="text: originAirport.code"></span>
+                  <small data-bind="text: originAirport.city.name"></small>
+                </div>
+                <hr>
+                <div>
+                  <b data-bind="text: arrivalDateTimeDisplay"></b>
+                  <span data-bind="text: destinationAirport.code"></span>
+                  <small data-bind="text: destinationAirport.city.name"></small>
+                </div>
+                <div>
+                  <small>Uçuş Süresi</small>
+                  <b data-bind="text: flightDuration"></b>
+                </div>
               </div>
-              <hr>
-              <div>
-                <b>01:15</b>
-                <span>IST</span>
-                <small>Istanbul</small>
-              </div>
-              <div>
-                <small>Uçuş Süresi</small>
-                <b>1h 30m</b>
+
+              <label data-bind="for: 'economy-class-' + $index">
+                <div>
+                  <input type="radio" data-bind="id: 'economy-class-' + $index, checked: preferedClass" name="class-type" value="economy">
+                  <span>ECONOMY</span>
+                </div>
+                <div>
+                  <small>Yolcu Başına</small>
+                  <b data-bind="text: fareCategories.ECONOMY.subcategories[0].price.currency + ' ' + fareCategories.ECONOMY.subcategories[0].price.amount"></b>
+                </div>
+              </label>
+
+              <label data-bind="for: 'business-class-' + $index">
+                <div>
+                  <input type="radio" data-bind="id: 'business-class-' + $index, checked: preferedClass" name="class-type" value="business">
+                  <span>BUSINESS</span>
+                </div>
+                <div>
+                  <small>Yolcu Başına</small>
+                  <b data-bind="text: fareCategories.BUSINESS.subcategories[0].price.currency + ' ' + fareCategories.ECONOMY.subcategories[0].price.amount"></b>
+                </div>
+              </label>
+            </div>
+            <div class="flight-option-detail" data-bind="visible: preferedClass() == 'economy'">
+              <div data-bind="foreach: fareCategories.ECONOMY.subcategories">
+                <div>
+                  <div>
+                    <div data-bind="text: brandCode"></div>
+                    <span>
+                      <sup data-bind="text: price.currency"></sup>
+                      <div data-bind="text: price.amount, class: $root.isPromotionEnabled() && brandCode == 'ecoFly' ? 'discounted':''"></div>
+                      <div data-bind="text: $root.isPromotionEnabled() && brandCode == 'ecoFly' ? price.amount/2 : price.amount, visible: $root.isPromotionEnabled() && brandCode == 'ecoFly'"></div>
+                    </span>
+                  </div>
+                  <ul data-bind="foreach: rights">
+                    <li data-bind="text: $data">15 kg bagaj</li>
+                  </ul>
+                  <button class="button" data-bind="click: $root.selectFlight, disable: $root.isPromotionEnabled() && brandCode != 'ecoFly'">Uçuşu seç</button>
+                </div>
               </div>
             </div>
-
-            <label for="economy-class-2">
-              <div>
-                <input type="radio" id="economy-class-2" name="class-type" value="economy">
-                <span>ECONOMY</span>
+            <div class="flight-option-detail" data-bind="visible: preferedClass() == 'business'">
+              <div data-bind="foreach: fareCategories.BUSINESS.subcategories">
+                <div>
+                  <div>
+                    <div data-bind="text: brandCode"></div>
+                    <span>
+                      <sup data-bind="text: price.currency"></sup>
+                      <div data-bind="text: price.amount, class: $root.isPromotionEnabled() && brandCode == 'ecoFly' ? 'discounted':''"></div>
+                      <div data-bind="text: $root.isPromotionEnabled() && brandCode == 'ecoFly' ? price.amount/2 : price.amount, visible: $root.isPromotionEnabled() && brandCode == 'ecoFly'"></div>
+                    </span>
+                  </div>
+                  <ul data-bind="foreach: rights">
+                    <li data-bind="text: $data">15 kg bagaj</li>
+                  </ul>
+                  <button class="button" data-bind="click: $root.selectFlight, disable: $root.isPromotionEnabled() && brandCode != 'ecoFly'">Uçuşu seç</button>
+                </div>
               </div>
-              <div>
-                <small>Yolcu Başına</small>
-                <b>TRY 137</b>
-              </div>
-            </label>
-
-            <label for="business-class-1">
-              <div>
-                <input type="radio" id="business-class-1" name="class-type" value="economy">
-                <span>BUSINESS</span>
-              </div>
-              <div>
-                <small>Yolcu Başına</small>
-                <b>TRY 137</b>
-              </div>
-            </label>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <section id="result" data-bind="with: selectedFlight, visible: currentState() == 'result'">
+      <header>
+        <i data-bind="class: status == 'AVAILABLE' ? 'icon-checkmark' : 'icon-cross'"></i>
+        Kabin seçiminiz tamamlandı.
+      </header>
+      <div>
+        Toplam tutar <span data-bind="text: price.currency + ' ' + price.amount * $root.passengerCount() / ($root.isPromotionEnabled() == true ? 2 : 1)"></span>
+      </div>
+      <button class="button" data-bind="click: $root.clearAllStages, text: status == 'AVAILABLE' ? 'Tekrar Satın Al' : 'Başa Dön', class: status == 'AVAILABLE' ? 'dark' : ''"></button>
+
+    </section>
     <script src="assets/js/knockout-3.5.1.js"></script>
     <script src="assets/js/popper.min.js" ></script>
     <script src="assets/js/app.js"></script>

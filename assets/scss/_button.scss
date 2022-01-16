@@ -3,6 +3,10 @@
 $button-dark-color: #242a36;
 $button-gray-color: #e9eeef;
 .button {
+  &[disabled] {
+    pointer-events: none;
+    background: gray;
+  }
   cursor: pointer;
   border: none;
   display: flex;
@@ -22,6 +26,10 @@ $button-gray-color: #e9eeef;
   }
 
   &.dark {
+    &[disabled] {
+      background: lighten($button-dark-color, 10);
+    }
+
     &.border {
       border: solid 1px;
       border-radius: 5px;

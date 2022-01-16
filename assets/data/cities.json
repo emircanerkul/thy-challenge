@@ -1,326 +1,326 @@
 [
   {
-    "text": "Adana",
-    "v": 1
-  },
-  {
-    "text": "Adıyaman",
-    "v": 2
-  },
-  {
-    "text": "Afyonkarahisar",
-    "v": 3
-  },
-  {
-    "text": "Ağrı",
-    "v": 4
-  },
-  {
-    "text": "Amasya",
-    "v": 5
-  },
-  {
-    "text": "Ankara",
-    "v": 6
+    "text": "İstanbul",
+    "v": "IST"
   },
   {
     "text": "Antalya",
-    "v": 7
+    "v": "AYT"
+  },
+  {
+    "text": "Adana",
+    "v": "773"
+  },
+  {
+    "text": "Adıyaman",
+    "v": "851"
+  },
+  {
+    "text": "Afyonkarahisar",
+    "v": "563"
+  },
+  {
+    "text": "Ağrı",
+    "v": "570"
+  },
+  {
+    "text": "Amasya",
+    "v": "170"
+  },
+  {
+    "text": "Ankara",
+    "v": "615"
   },
   {
     "text": "Artvin",
-    "v": 8
+    "v": "14"
   },
   {
     "text": "Aydın",
-    "v": 9
+    "v": "804"
   },
   {
     "text": "Balıkesir",
-    "v": 10
+    "v": "346"
   },
   {
     "text": "Bilecik",
-    "v": 11
+    "v": "282"
   },
   {
     "text": "Bingöl",
-    "v": 12
+    "v": "831"
   },
   {
     "text": "Bitlis",
-    "v": 13
+    "v": "680"
   },
   {
     "text": "Bolu",
-    "v": 14
+    "v": "931"
   },
   {
     "text": "Burdur",
-    "v": 15
+    "v": "801"
   },
   {
     "text": "Bursa",
-    "v": 16
+    "v": "902"
   },
   {
     "text": "Çanakkale",
-    "v": 17
+    "v": "934"
   },
   {
     "text": "Çankırı",
-    "v": 18
+    "v": "59"
   },
   {
     "text": "Çorum",
-    "v": 19
+    "v": "440"
   },
   {
     "text": "Denizli",
-    "v": 20
+    "v": "811"
   },
   {
     "text": "Diyarbakır",
-    "v": 21
+    "v": "448"
   },
   {
     "text": "Edirne",
-    "v": 22
+    "v": "470"
   },
   {
     "text": "Elazığ",
-    "v": 23
+    "v": "334"
   },
   {
     "text": "Erzincan",
-    "v": 24
+    "v": "581"
   },
   {
     "text": "Erzurum",
-    "v": 25
+    "v": "66"
   },
   {
     "text": "Eskişehir",
-    "v": 26
+    "v": "321"
   },
   {
     "text": "Gaziantep",
-    "v": 27
+    "v": "17"
   },
   {
     "text": "Giresun",
-    "v": 28
+    "v": "571"
   },
   {
     "text": "Gümüşhane",
-    "v": 29
+    "v": "159"
   },
   {
     "text": "Hakkari",
-    "v": 30
+    "v": "783"
   },
   {
     "text": "Hatay",
-    "v": 31
+    "v": "207"
   },
   {
     "text": "Isparta",
-    "v": 32
+    "v": "867"
   },
   {
     "text": "Mersin",
-    "v": 33
-  },
-  {
-    "text": "İstanbul",
-    "v": 34
+    "v": "266"
   },
   {
     "text": "İzmir",
-    "v": 35
+    "v": "570"
   },
   {
     "text": "Kars",
-    "v": 36
+    "v": "735"
   },
   {
     "text": "Kastamonu",
-    "v": 37
+    "v": "814"
   },
   {
     "text": "Kayseri",
-    "v": 38
+    "v": "350"
   },
   {
     "text": "Kırklareli",
-    "v": 39
+    "v": "622"
   },
   {
     "text": "Kırşehir",
-    "v": 40
+    "v": "3"
   },
   {
     "text": "Kocaeli",
-    "v": 41
+    "v": "265"
   },
   {
     "text": "Konya",
-    "v": 42
+    "v": "814"
   },
   {
     "text": "Kütahya",
-    "v": 43
+    "v": "410"
   },
   {
     "text": "Malatya",
-    "v": 44
+    "v": "507"
   },
   {
     "text": "Manisa",
-    "v": 45
+    "v": "945"
   },
   {
     "text": "Kahramanmaraş",
-    "v": 46
+    "v": "592"
   },
   {
     "text": "Mardin",
-    "v": 47
+    "v": "496"
   },
   {
     "text": "Muğla",
-    "v": 48
+    "v": "449"
   },
   {
     "text": "Muş",
-    "v": 49
+    "v": "263"
   },
   {
     "text": "Nevşehir",
-    "v": 50
+    "v": "578"
   },
   {
     "text": "Niğde",
-    "v": 51
+    "v": "417"
   },
   {
     "text": "Ordu",
-    "v": 52
+    "v": "715"
   },
   {
     "text": "Rize",
-    "v": 53
+    "v": "447"
   },
   {
     "text": "Sakarya",
-    "v": 54
+    "v": "686"
   },
   {
     "text": "Samsun",
-    "v": 55
+    "v": "450"
   },
   {
     "text": "Siirt",
-    "v": 56
+    "v": "700"
   },
   {
     "text": "Sinop",
-    "v": 57
+    "v": "764"
   },
   {
     "text": "Sivas",
-    "v": 58
+    "v": "385"
   },
   {
     "text": "Tekirdağ",
-    "v": 59
+    "v": "258"
   },
   {
     "text": "Tokat",
-    "v": 60
+    "v": "788"
   },
   {
     "text": "Trabzon",
-    "v": 61
+    "v": "888"
   },
   {
     "text": "Tunceli",
-    "v": 62
+    "v": "879"
   },
   {
     "text": "Şanlıurfa",
-    "v": 63
+    "v": "571"
   },
   {
     "text": "Uşak",
-    "v": 64
+    "v": "323"
   },
   {
     "text": "Van",
-    "v": 65
+    "v": "651"
   },
   {
     "text": "Yozgat",
-    "v": 66
+    "v": "813"
   },
   {
     "text": "Zonguldak",
-    "v": 67
+    "v": "282"
   },
   {
     "text": "Aksaray",
-    "v": 68
+    "v": "722"
   },
   {
     "text": "Bayburt",
-    "v": 69
+    "v": "895"
   },
   {
     "text": "Karaman",
-    "v": 70
+    "v": "748"
   },
   {
     "text": "Kırıkkale",
-    "v": 71
+    "v": "665"
   },
   {
     "text": "Batman",
-    "v": 72
+    "v": "136"
   },
   {
     "text": "Şırnak",
-    "v": 73
+    "v": "553"
   },
   {
     "text": "Bartın",
-    "v": 74
+    "v": "348"
   },
   {
     "text": "Ardahan",
-    "v": 75
+    "v": "349"
   },
   {
     "text": "Iğdır",
-    "v": 76
+    "v": "396"
   },
   {
     "text": "Yalova",
-    "v": 77
+    "v": "333"
   },
   {
     "text": "Karabük",
-    "v": 78
+    "v": "258"
   },
   {
     "text": "Kilis",
-    "v": 79
+    "v": "344"
   },
   {
     "text": "Osmaniye",
-    "v": 80
+    "v": "24"
   },
   {
     "text": "Düzce",
-    "v": 81
+    "v": "781"
   }
 ]
