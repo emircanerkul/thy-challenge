@@ -177,7 +177,6 @@ function getFlights(url, target) {
       return e;
     });
     target(data);
-    // do something with jsonResponse
   };
   req.send(null);
 }

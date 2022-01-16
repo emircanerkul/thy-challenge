@@ -10,5 +10,8 @@
     "jest": "^27.4.7",
     "livereload": "^0.9.3",
     "node-sass": "^7.0.1"
+  },
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
   }
 }
