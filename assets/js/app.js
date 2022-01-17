@@ -33,7 +33,7 @@ function FlightChallengeViewModel(data) {
     }
   }, this);
 
-  self.defaultShortBy = ko.observable('economy');
+  self.defaultShortBy = ko.observable();
 
   self.availableDestinations = self.availableOrigins;
 
@@ -127,10 +127,10 @@ ko.applyBindings(flightChallengeViewModel);
 
 flightChallengeViewModel.defaultShortBy.subscribe(function (v) {
   let flights = flightChallengeViewModel.flights();
-  if (v == 'arrival') {
+  if (v == 'economy') {
     flights = flights.sort((f, s) => f.fareCategories.ECONOMY.subcategories[0].price.amount - s.fareCategories.ECONOMY.subcategories[0].price.amount)
   } else {
-    flights = flights.sort((f, s) => f.departureDateTimeDisplay.split(':')[0] - s.departureDateTimeDisplay.split(':')[0])
+    flights = flights.sort((f, s) => parseInt(f.departureDateTimeDisplay.split(':')[0]) - parseInt(s.departureDateTimeDisplay.split(':')[0]))
   }
   flightChallengeViewModel.flights(flights);
 });
@@ -177,6 +177,7 @@ function getFlights(url, target) {
       return e;
     });
     target(data);
+    flightChallengeViewModel.defaultShortBy('economy');
   };
   req.send(null);
 }
