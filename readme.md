@@ -1,7 +1,5 @@
 # Rapor (SearchFlight Challenge)
 
-## Özet
-
 Bu çalışma tamamen **responsive** olacak şekilde görsellere bakarak herhangi bir bootstrap vb. kütüphaneler kullanılmadan kodladım.
 
 **Knockoutjs** (opsiyonel olarak) istendiği için önceden hiç kullanmamış olsamda bu projede dökümantasyonuna baka baka kullandım ve açıkçası çok sevdim. Jquery ile yapmış olsam hayli hayli fazla zaman alırdı. Selector kullanmamak cidden güzelmiş. MVVM paternini Flutter araştırmalarımda görmüştüm webde karşılaşacağım aklıma gelmezdi.
@@ -15,8 +13,6 @@ Opsiyonel olsa da **LocalStorage** stage değerlerini tutmak için kullandım. K
 Düz css yazmak yerine **sass** kullandım ve bu sayede çok daha derli toplu bir proje ortaya çıktı.
 
 Iconları sadece ihtiyaç duyduklarımı **icomoon**'dan seçtim ve böylece çok daha optimize edilmiş bir kaynak kod ortaya çıktı.
-
-## Geliştirme
 
 Tüm npm bağımlılıklarının kurulumu için `npm install` komutu çalıştırılmalıdır. Kolaylık olması için aşağıdaki komutları tek komutta birleştirerek `npm run dev` şeklinde kullanmaktayım.
 
@@ -37,5 +33,4 @@ Tüm npm bağımlılıklarının kurulumu için `npm install` komutu çalıştı
 `npm run test` komutu ile test işlemlerini gerçekleştirmekteyim.
 
 Sayıgılarımla
-
-[Emircan ERKUL](https://emircanerkul.com/)
+[Emircan ERKUL](https://emircanerkul.com/) 16.01.2022
